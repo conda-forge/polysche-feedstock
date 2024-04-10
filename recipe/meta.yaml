@@ -1,5 +1,5 @@
 {% set name = "PolySche" %}
-{% set version = "0.1.1" %}
+{% set version = "0.1.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/rolanddenis/polysche/archive/v{{ version }}.tar.gz
-  sha256: e539339f26afb506bf2d007a0039857e4d0eb24550248a27f0f532704838b9b0
+  sha256: cb3f7c24fe4a81b292699724f52b159854afc1ae469080a852f2ed310330da49
 
 build:
   number: 0
@@ -23,7 +23,12 @@ requirements:
 test:
   commands:
     - test -d "${PREFIX}/include/polysche"  # [unix]
+    - test -f "${PREFIX}/include/polysche/rational.hpp"  # [unix]
+    - test -f ${PREFIX}/lib/cmake/PolySche/PolyScheConfig.cmake  # [unix]
+    - test -f ${PREFIX}/lib/cmake/PolySche/PolyScheConfigVersion.cmake  # [unix]
     - if not exist %LIBRARY_PREFIX%\include\polysche\rational.hpp (exit 1)  # [win]
+    - if not exist %LIBRARY_PREFIX%\lib\cmake\PolySche\PolyScheConfig.cmake (exit 1)  # [win]
+    - if not exist %LIBRARY_PREFIX%\lib\cmake\PolySche\PolyScheConfigVersion.cmake (exit 1)  # [win]
 
 about:
   home: https://github.com/rolanddenis/PolySche
