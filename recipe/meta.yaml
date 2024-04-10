@@ -23,7 +23,12 @@ requirements:
 test:
   commands:
     - test -d "${PREFIX}/include/polysche"  # [unix]
+    - test -f "${PREFIX}/include/polysche/rational.hpp"  # [unix]
+    - test -f ${PREFIX}/lib/cmake/PolySche/PolyScheConfig.cmake  # [unix]
+    - test -f ${PREFIX}/lib/cmake/PolySche/PolyScheConfigVersion.cmake  # [unix]
     - if not exist %LIBRARY_PREFIX%\include\polysche\rational.hpp (exit 1)  # [win]
+    - if not exist %LIBRARY_PREFIX%\lib\cmake\PolySche\PolyScheConfig.cmake (exit 1)  # [win]
+    - if not exist %LIBRARY_PREFIX%\lib\cmake\PolySche\PolyScheConfigVersion.cmake (exit 1)  # [win]
 
 about:
   home: https://github.com/rolanddenis/PolySche
